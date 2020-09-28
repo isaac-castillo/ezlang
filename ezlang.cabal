@@ -1,0 +1,54 @@
+name:                ezlang
+version:             0.1.0.0
+build-type:          Simple
+cabal-version:       >=1.10
+
+
+Library
+  ghc-options:         -W
+  exposed-modules:    Ezlang.Types,
+                      Ezlang.Eval,
+                      Ezlang.Parser,
+                      Ezlang.Repl
+  Default-Extensions: OverloadedStrings
+
+  -- other-extensions:
+  build-depends:       base,
+                       array,
+                       mtl,
+                       directory,
+                       QuickCheck
+
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+  build-tools:         alex, happy
+  other-modules:       Ezlang.Lexer
+
+executable ezlang
+  build-depends:       base,
+                       mtl,
+                       transformers,
+                       directory,
+                       QuickCheck,
+                       ezlang
+  default-language:    Haskell2010
+  main-is:             src/Main.hs
+  Default-Extensions: OverloadedStrings
+
+test-suite test
+  default-language: Haskell2010
+  type:             exitcode-stdio-1.0
+  hs-source-dirs:   tests
+  ghc-options:      -threaded
+  Default-Extensions: OverloadedStrings
+  main-is:          Test.hs
+  build-depends:    base,
+                    directory,
+                    filepath,
+                    QuickCheck,
+                    tasty,
+                    tasty-hunit,
+                    tasty-quickcheck,
+                    process,
+                    ezlang
+  other-modules:    Common
