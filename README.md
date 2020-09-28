@@ -5,5 +5,7 @@ You can use the repository in the following way:
 
 ```sh
 $ stack build
+$ stack run
+$ stack test
 ```
 
